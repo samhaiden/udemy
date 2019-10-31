@@ -1,0 +1,224 @@
+    <style type="text/css">
+    
+        /* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+        body {
+            
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: repeat(4, minmax(30px, auto));
+            }
+        
+        .topbar {
+            
+            width: 1425px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(18,1fr);
+            text-align: center;
+        }
+        
+        .topstyle {
+            
+            padding: 12px 10px 10px 10px;
+            border-left: 1px solid #CCCCCC;
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 13px;
+
+        }
+        
+        .logo {
+            
+            padding-top: 7px;
+            grid-column: 5/6;
+            margin-right: 20px;
+            width: 80px;
+            
+        }
+        
+        .signin {
+            
+            text-align: left;
+            grid-column: 7/9;
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 13px;
+            border-left: none;
+            
+        }
+        
+        .imgwrap {
+            text-align: center;
+            padding-left: 5px;
+            border-left: 1px solid #CCCCCC;
+            
+        }
+        
+        .signinimg {
+            width: 30px;
+            padding-top: 5px;
+        }
+        
+        .news {
+            
+            grid-column: 9/10;
+        }
+        
+        .header {
+            
+            background-color: #AD2D25;
+            width: 100%;
+        }
+        
+        .headerwrap {
+            display: grid;
+            grid-template-columns: repeat(18,1fr);
+            width: 1425px;
+            margin: auto;
+            
+        }
+        
+        h1 {
+            
+            color: white;
+            font-size: 45px;
+            font-family: sans-serif;
+            grid-column: 4/6;
+            padding-left: 33px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+ 
+        .more {
+            
+            border-right: 1px solid #CCCCCC;
+            padding-right: 70px;
+        }
+        
+        .search {
+        
+            background-color: #E4E4E4;
+            color: black;
+            font-weight: bold;
+            border: none;
+            margin-top: 8px;
+            margin-left: 7px;
+            width: 175px;
+            height: 20px;
+            font-size: 13px;
+        }
+
+        #logobtn {
+    
+            grid-column: 17/18;
+            margin-top: 10px;
+    
+        }
+        
+        .mainnav {
+            background-color: #9C2921;
+            align-self: baseline;
+            padding: 0px 0px;
+            
+        }
+        
+        .navwrap {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            width: 1425px;
+            margin: auto;
+
+        }
+        
+        .navobj {
+            color: white;
+            font-family: sans-serif;
+            border-left: 1px solid #AD2D25;
+            font-size: 13px; 
+            text-align: center;
+            padding: 10px 0px;
+        }
+        
+        
+        .navhome {
+            
+            border-left: none;
+            grid-column: 4/5;
+            padding-left: 40px;
+            padding-right: 10px;
+            
+        }
+        
+        .us {
+            
+            padding: 10px 5px;
+
+        }
+        
+        .ent {
+            padding: 10px 5px;
+
+        }
+        
+        .bus {
+            
+        }
+        
+        .more2 {
+            
+        }
+        
+        a {
+            
+            text-decoration: none;
+            color: white;
+        }
+        
+        .navobj:hover {
+            
+            border-bottom: 3px solid white;
+        }
+        
+        .main {
+            
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(5, minmax(10px, auto));
+            width: 1425px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(18,1fr);
+            text-align: center;
+        }
+        
+        .h3 {
+            
+            grid-column: 3/4;
+        }
+        
+    </style>

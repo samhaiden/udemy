@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+        <title> CSS3 Gradients </title>
+        
+        <style>
+        
+            #gradient {
+                width: 300px;
+                height: 200px;
+                background-color: blue;
+                background: linear-gradient(to right, white, red, green, blue);
+            }
+            
+            #radialGradient {
+                width: 300px;
+                height: 200px;
+                background-color: blue;
+                background: radial-gradient(white, blue);
+            }
+            
+            #gradient2 {
+                width: 300px;
+                height: 200px;
+                background-color: yellow;
+                background: linear-gradient(to top right, yellow, green);
+            }
+            
+            h2 {
+                text-shadow: 2px 2px 4px green, -5px -5px 4px yellow;
+                color: white;
+            }
+            
+            h3 {
+                text-shadow: 0 0 5px red;
+            }
+            
+            #shadow {
+                width: 300px;
+                height: 200px;
+                box-shadow: 3px 3px 8px grey;
+                background-color: antiquewhite;
+            }
+            
+            body {
+                margin-left: 30px;
+            }
+            
+            div {
+                margin-bottom: 30px;
+
+            }
+        
+        
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <h2>This text will have a shadow</h2>
+        
+        <h3>This text will glow</h3>
+        
+        <div id="shadow"></div>
+     
+    <div id="gradient">
+        
+         This is a gradient.
+        
+    </div> 
+        
+    <div id="radialGradient"></div>
+        
+    <div id="gradient2">
+        
+         This is a gradient.
+        
+    </div> 
+        
+    </body>
+
+</html>

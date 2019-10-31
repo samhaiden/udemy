@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html>
+
+    <head>
+
+    <title>JQuery UI</title>
+
+            <script type="text/javascript" src="jquery.min.js"></script>
+
+            <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+
+            <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+        
+        <style type="text/css">
+
+            body {
+                
+                margin: 0px;
+                padding: 0px;
+                font-family: sans-serif;
+            }
+            
+            #headerWrapper {
+                
+                background-color: #EEEEEE;
+                height: 40px;
+            }
+            
+            #logo {
+                
+                float: left;
+                font-weight: bold;
+                font-size: 20px;
+                padding: 8px 8px;
+            }
+            
+            #selectionWrapper {
+                
+                width: 242px;
+                margin: auto;
+                padding-top: 4px;
+            }
+            
+            .toggleButton {
+                
+                border: 1px solid grey;
+                float: left;
+                padding: 5px;
+                border-left: none;
+            }
+            
+            #html {
+                
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-left: 1px solid grey;
+                
+            }
+            
+            #output {
+              
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                
+            }
+            
+            .active {
+                
+                background-color: lightblue;
+            }
+            
+            .panel {
+                
+                resize: none;
+            
+            }
+            
+            .hover {
+                
+                background-color: grey;
+                
+            }
+            
+            .panel {
+                
+                border: 1px solid grey;
+                float: left;
+                border-left: none;
+                
+            }
+            
+            #codeOutput {
+                
+                border: none;
+                
+            }
+            
+            #cssText {
+                
+                display: none;
+                
+            }
+            
+            #javascriptText {
+                
+                display: none;
+                
+            }
+            
+            #htmlText {
+                
+                width: 50%;
+            }
+
+        </style>
+
+    </head>
+
+        <body>
+            
+            <div id="headerWrapper">
+            
+                <div id="logo">CodePlayer</div>
+                
+                <div id="selectionWrapper">
+                
+                    <div class="toggleButton clickable active" id="html">HTML</div>
+                    
+                    <div class="toggleButton clickable" id="css">CSS</div>
+                    
+                    <div class="toggleButton clickable" id="javascript">Javascript</div>
+                    
+                    <div class="toggleButton active" id="output">Output</div>
+                    
+                
+                </div>   
+
+            </div>
+            
+                <textarea id="htmlText" class="panel"><p id="text">Hello!</p></textarea>
+            
+                <textarea id="cssText" class="panel">p { color: red; }</textarea>
+
+                <textarea id="javascriptText" class="panel">document.getElementById("text").innerHTML = "Hi Sam!";</textarea>
+            
+                <iframe id="codeOutput" class="panel"></iframe>
+            
+                
+            
+        <script>
+            
+            
+            // Updates CSS and Javascript on page load
+            
+            function updateOutput() {
+                
+                $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssText").val() + "</style></head><body>" + $("#htmlText").val() + "</body></html>");
+                
+                document.getElementById("codeOutput").contentWindow.eval($("#javascriptText").val());
+                
+            }
+            
+            
+            
+            // Changes classes on hover
+            
+            $(".toggleButton").hover(function() {
+                
+                $(this).addClass("hover");
+                
+            }, function() { 
+                
+                $(this).removeClass("hover");
+                
+            })
+            
+            
+            
+            // Hides or Displays panel on click and changes panel width
+            
+            $(".clickable").click(function() {
+                
+                $(this).toggleClass("active");
+                
+                $(this).removeClass("hover");
+                
+                var panelId = $(this).attr("id") + "Text";
+
+		          $("#" + panelId).toggle();
+                
+                $(".panel").innerWidth($(window).innerWidth() / $(".panel:visible").length - 4);
+        
+                
+            })
+            
+            // Runs update function
+            
+            updateOutput();
+            
+            
+            
+            // Adjusts panel height
+            
+            $(".panel").height($(window).height() - $("#headerWrapper").height());
+            
+            
+            
+            // Changes iframe output when text is changed in HTML, CSS, and Javascript panels
+            
+            $("textarea").on('change keyup paste', function() {
+   
+                updateOutput();
+                
+            })
+            
+            /* for adding text to html panel content to iframe $("#codeOutput").contents().find("html").html($("#htmlText").val()); */
+            
+        </script>
+
+        </body>
+
+</html>

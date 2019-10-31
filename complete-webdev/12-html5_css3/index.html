@@ -1,0 +1,192 @@
+<!doctype html>
+
+<html>
+
+<head>
+    
+    <title>HTML 5 and CSS 3</title>
+    
+    <meta name="viewport" content="devise-width, initial-scale-1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    
+    <style>
+    
+        #canvas {
+            border: 1px solid grey;
+        }
+    
+    </style>
+    
+</head>
+
+<body>
+    
+    <h1>New field types in HTML 5</h1>
+    
+    <form id="myForm">
+    
+        <p>Placeholder<input type="text" placeholder="Insert Name Here"></p>
+        
+        <p>Autofocus<input type="text" autofocus="autofocus"</p>
+            
+        <p>Autocomplete<input type="text" autocomplete="off"></p>
+        
+        <p>Required<input type="text" required></p>
+        
+        <p>Email<input type="email"></p>
+        
+        <p>Pattern via Regex<input type="text" pattern="[0-9]"></p>
+        
+            <datalist id="names">
+        
+                <select>
+                    
+                    <option value="Rob">Rob</option>
+
+                    <option value="Kirsten">Kirsten</option>
+
+                    <option value="Tommy">Tommy</option>
+                    
+                </select>
+        
+            </datalist>
+        
+        <p>Datalist<input type="text" list="names"></p>
+        
+        <p><input type="submit" value="Submit"></p>
+        
+        <p>Multiple file upload: <input type="file" multiple></p>
+        
+        <p>Code outside of form: <input form="myForm" type ="text" formaction="processform2.php" formmethod="post"></p>
+        
+         </form>
+        
+        <h1>Adding audio and video</h1>
+        
+        <video id="video" width="320" height="240" controls autoplay>
+        
+        <source src="SampleVideo_1280x720_20mb.mp4" type="video/mp4">
+            
+            Please upgrade your browser.
+        
+        </video>
+    
+    <button id="play">Pause</button>
+    
+    <br>
+    
+        <audio controls>
+        
+        <source src="SampleAudio_0.4mb.mp3" type="audio/mpeg">
+            
+            Please upgrade your browser.
+        
+        </audio>
+    
+    <h1>Canvas</h1>
+    
+    <canvas id="canvas" width="500" height="400"></canvas>
+    
+    <!-- display of inline, div like elements for structuring page
+
+    header, footer, article, section, nav, menu
+    
+    -->
+    
+    <figure>
+    
+        <img data-description="butterfly" id="image" src="https://helpx.adobe.com/in/stock/how-to/visual-reverse-image-search/_jcr_content/main-pars/image.img.jpg/visual-reverse-image-search-v2_1000x560.jpg" alt="butterfly">
+        
+        <figcaption>
+        
+            <p><mark>This is a butterfly</mark> <small>(google images)</small></p>
+            
+        </figcaption>
+        
+    </figure>
+    
+    <input type="range" min="0" max="100" step="1">
+    
+    <div contenteditable="true">
+    
+        This is some text.
+    
+    </div>
+    
+    <script>
+        
+        //document.createElement("container");
+        
+        var vid = document.getElementById("video");
+    
+        document.getElementById("play").onclick = function() {
+            
+            if ( vid.paused ) {
+                    
+                document.getElementById("video").play();
+                this.innerHTML = "Pause";
+                
+            } else {
+                
+                document.getElementById("video").pause();
+                this.innerHTML = "Play";
+                
+            }
+                
+        }
+        
+        var myCanvas = document.getElementById("canvas");
+        
+        var context = myCanvas.getContext("2d");
+        
+        var gradient = context.createLinearGradient(150, 100, 350,300);
+        
+        gradient.addColorStop(0, "white");
+        gradient.addColorStop(1, "black");
+        
+        context.fillStyle = gradient;
+        context.fillRect(150,100,200,200);
+        
+        /*context.strokeStyle = "#F42924";
+        context.lineWidth = 20;
+        context.moveTo(0,400);
+        context.lineTo(500,0);
+        context.stroke();
+        context.moveTo(0,0);
+        context.lineTo(500,400);
+        context.stroke();*/
+        
+        context.fillRect(150,100,200,200);
+        context.strokeStyle = "#F42924";
+        context.lineWidth = 5;
+        
+        context.moveTo(150,100);
+        context.lineTo(350,300);
+        
+        
+        context.moveTo(350,100);
+        context.lineTo(150,300);
+        context.stroke();
+        
+        context.beginPath();
+        context.arc(75, 75, 50, Math.PI, 2*Math.PI * 3/4);
+        context.stroke();
+        
+        
+        var gradient2 = context.createLinearGradient(200, 50, 275, 50);
+        gradient2.addColorStop(0, "red");
+        gradient2.addColorStop(1, "yellow");
+        
+        
+        context.fillStyle = gradient2;
+        context.font = "20px Arial";
+        context.fillText("My Canvas", 200, 50);
+        
+        
+    
+    
+    </script>
+            
+    
+</body>
+
+</html>

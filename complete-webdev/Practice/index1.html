@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+  <title>Sam Haiden</title>
+
+  <style media="screen" type="text/css">
+    @media only screen and (min-width: 700px) {
+
+      body {
+        padding: 0px;
+        margin: 0px;
+        font-family: sans-serif;
+      }
+
+      .navigation {
+        top: 0;
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        background-color: pink;
+        height: 40px;
+      }
+
+      #logo {
+        grid-column: 1/2;
+        padding: 5px 10px;
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      .navItems {
+        width: 210px;
+        grid-column: 3/4;
+        margin-left: 225px;
+
+      }
+
+      a {
+        display: inline-block;
+        padding: 10px 10px;
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover {
+        color: white;
+      }
+
+      #icon {
+        display: none;
+
+      }
+
+      .active {
+        color: grey;
+      }
+
+      .wrapper {
+        margin-top: 50px;
+        height: 1500px;
+      }
+
+      #droppable {
+        width: 400px;
+        height: 400px;
+        border: 1px solid black;
+      }
+
+      #draggable {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      #resize {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+      }
+
+    }
+
+    @media only screen and (max-width: 700px) {
+
+      body {
+        padding: 0px;
+        margin: 0px;
+        font-family: sans-serif;
+      }
+
+      .navigation {
+        top: 0;
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        background-color: pink;
+        height: 40px;
+      }
+
+      #logo {
+        grid-column: 1/2;
+        padding: 9px 14px;
+        font-size: 15px;
+        font-weight: bold;
+        width: 100px;
+      }
+
+      .navItems {
+        display: none;
+      }
+
+      #icon {
+        width: 20px;
+        display: inline-block;
+        grid-column: 3/4;
+        padding: 8px 0px;
+        margin-left: auto;
+        padding-right: 10px;
+
+      }
+
+      a {
+        display: inline-block;
+        padding: 10px 10px;
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover {
+        color: white;
+      }
+
+      .active {
+        color: grey;
+      }
+
+      .wrapper {
+        margin-top: 50px;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="RubberBandjs">
+    <div class="rband">
+      <img src="down-arrow.png" class="arrow" />
+      <img src="loading.gif" class="load" />
+      <h3 class="text"></h3>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <div id="logo">Sam Haiden</div>
+    <img src="hamburger-icon.png" id="icon"></img>
+    <div class="navItems">
+      <a href="index.html" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+
+
+  <div class="wrapper">
+
+    <h1>Sam Haiden</h1>
+    <button type="button" name="submit">Enter</button>
+
+    <div id="droppable">
+      <div id="draggable"></div>
+    </div>
+
+    <div id="resize">
+
+    </div>
+
+  </div>
+
+  <!-- <script>
+    var RB = new RubberBand(function(e) {
+
+      // make your call to AJAX or simply reload the page
+      location.reload();
+
+      // don't forget to close RubberBand when you're done.
+      e.close();
+    });
+  </script> -->
+
+  <script type="text/javascript">
+    $("button").click(function() {
+
+      $("h1").css("color", "blue");
+
+    })
+  </script>
+
+  <script type="text/javascript">
+    var visible = true;
+
+    $("#icon").click(function() {
+
+      if (visible == true) {
+
+        $("#logo").css("display", "none");
+
+        visible = false;
+
+
+      } else if (visible == false) {
+
+        $("#logo").css("display", "block");
+
+        visible = true;
+
+      }
+
+    })
+
+  </script>
+
+  <script type="text/javascript">
+
+
+  $("#draggable").draggable({
+
+    containment: "#droppable"
+
+  })
+
+  $("#droppable").droppable({
+ drop: function(event, ui) {
+
+   $("#resize").css("background-color","blue");
+ }
+
+
+  })
+
+$("#resize").resizable();
+
+
+
+  </script>
+
+</body>
+
+</html>
