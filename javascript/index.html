@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    <style>
+        
+      
+        .toggle {
+            padding: 10px;
+            font-size: 1.2em;
+            background-color: aliceblue;
+            margin: 5px;
+        }
+        
+        .active1 {
+            background-color: lightgray;
+            color: white;
+        }
+        
+        html {
+            font-family: sans-serif;
+        }
+        .canvas {
+            border: 1px solid black;
+        }
+    
+        table {
+            border-collapse: collapse;
+            
+        }
+        
+        td, tr, th {
+            padding: 5px;
+            border: 1px solid black;
+        }
+        
+        .click:hover {
+            background-color:dodgerblue;
+            color: white;
+        }
+        
+        .title {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            border: 1px solid black;
+            height: 100px;
+            text-align: center;
+        }
+        
+        .box {
+            border: 1px solid black;
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+        }
+        
+        .content {
+            display: none;
+            border: 1px solid grey;
+            background-color: grey;
+            padding: 50px;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .box2 {
+            border: 2px solid red;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+        }
+        
+        .active {
+            font-weight:bold;
+            background-color: yellow;
+        }
+        
+        .box3 {
+            border: 3px solid blue;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        
+        .el {
+            display: inline-block;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+        }
+        
+        #overlap {
+            display: none;
+            top: 50px;
+            z-index: 1000;
+        position: absolute;
+        left: 0;
+        right:0;
+        margin-left:auto;
+        margin-right: auto;
+        width: 400px;
+        height: 200px;
+        background-color: #ddd;
+        border: 1px solid black;    
+        }
+        
+        #output {
+            width: 400px;
+            height: 400px;
+            display: block;
+            border: 1px solid black;
+        }
+        
+        .colorOpt {
+            width: 100px;
+            height: 50px;
+            border: 1px solid black;
+            display: inline-block;
+        }
+        #red {
+            background-color:red;
+        }
+        #blue {
+            background-color:blue;
+        }
+        #green {
+            background-color:green;
+        }
+        #yellow {
+            background-color:yellow;
+        }
+        
+        .text {
+            width:100px;
+            height:50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+        
+        .gameboard {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+        }
+        
+        .office {
+            float: left;
+            width: 120px;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #ddd;
+            margin: 10px 39px;
+        }
+        
+        .desk {
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            background-color: burlywood;
+            z-index: 2;
+            bottom: 0;
+        }
+        .computer {
+            background: url('https://icon2.cleanpng.com/20180202/bwq/kisspng-ipad-3-ipad-4-ipad-2-ipad-air-ipad-1-ipad-tablet-transparent-background-5a753eb1b91014.207640401517633201758.jpg') bottom center no-repeat;
+            position: absolute;
+            background-size: 100% 100%;
+            top: 100%;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s;
+        }
+        
+        .popup {
+            top: 0;
+        }
+        
+        #gamePlayBoard {
+            
+        }
+        
+        #gamePlayWrapper {
+            
+        }
+        .gameTile {
+            display:inline-block;
+            padding: 3px;
+        }
+        .gamePlayStart {
+            border-radius: 10px;
+            background-color: red;
+            color: white;
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        
+        .gamePlayStart:hover {
+            background-color: crimson;
+            cursor: pointer;
+        }
+        .flipImage {
+            width:150px;
+        }
+        
+        #map {
+            height:500px;
+            width: 500px;
+            display:block;
+            border: 1px solid black;
+        }
+        
+        .wrapper {
+            display: inline-block;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid black;
+            height: 300px;
+            width: 300px;
+        }
+        .img-fluid {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .productItem {
+            text-decoration: none;
+            border: 1px solid black;
+            background-color: green;
+            color:white;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 150px;
+            
+        }
+        .qChange {
+            width: 50px;
+            text-align: center;
+            margin-right: 5px;
+            
+        }
+        
+    </style>
+</head>
+
+<body>
+   <p id='jsBlock'></p>
+   <h1 id="title">
+       Card Deck
+   </h1>
+   
+   
+   
+   
+ <form method='get' name='myForm' id ='myForm'>
+ 
+      <label>Num</label><br>
+       <input id = 'num' name='Number'/>
+   <br>
+      <label>Name</label><br>
+       <input id = 'name' name='Name'/>
+   <br>
+      <input id='submit' type='submit' value='click me' />
+       
+</form>
+    <br>
+    
+    
+    <button action id="button1" value='hi'>Click Me</button>
+      <button action id="button2" value='me'>Click Me</button>
+      <button action id="button3" value='mine'>Click Me</button>
+    <p id = 'guesses'>
+   </p>
+
+  <form name='imageForm'>
+  
+   <label>Size</label>
+   <select id='sizing'>
+       
+       <option value="">Select</option>
+       <option value="150x150">Small</option>
+       <option value="300x300">Medium</option>
+       <option value="500x500">Large</option>
+      
+   </select>
+
+   <br>
+   
+   <label>Color</label>
+   <select id='color'>
+       
+       <option value="">Select</option>
+       <option value="33B5FF">Blue</option>
+       <option value="FF3346">Red</option>
+       <option value="F9FF33">Yellow</option>
+       
+   </select>
+   
+   <br>
+   
+   <button form='imageForm' id='imgSubmit'>Submit Image</button>
+   
+   </form>
+   
+   
+   <img id="myImage" />
+   
+   <br>
+   <br>
+   
+   <button id='start'>Start</button>
+   <br>
+  
+   <p id="findName">Welcome</p>
+   <p id="answer">Click Start</p>
+    <br>
+   <p id='names'></p>
+   
+   
+
+   <form name='form2'>
+       <input type="url" name ='url' id='url'/>
+       <input type="text" name ='first' id='first'/>
+       <input type="text" name ='last' id='last'/>
+       <textarea name='output'></textarea>
+       <br>
+       <br>
+       <div class="title" id='one'>Box 1</div>
+       <div class="content">This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</div>
+       <div class="title" id='two'>Box 2</div>
+       <div class="content">This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</div>
+       <div class="title" id='three'>Box 3</div>
+       <div class="content">This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</div>
+       <div class="title" id='four'>Box 4</div>
+       <div class="content">This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</div>
+       <div class="title" id='five'>Box 5</div><div class="content">This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</div>
+        <div class="content">This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</div>
+       <br>
+       <input id='btn1' type='button' onclick='myfun()' value='click here' />
+       
+   </form>
+   
+      <br>
+       <div id='msg'>Msg</div>
+       <div id='msg2'>Msg 2</div>
+       <div class='output highlight' id='two'>2</div>
+       <div class='output' id='three'>3</div>
+       <div class='output highlight' id='four'>4</div>
+       <div class='output' id='five'>5</div>
+    
+    
+    <button id="popupBtn">CLICK FOR MODAL</button>
+    <div id='overlap'>
+        
+        <p>This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text This is dummy text v This is dummy text</p>
+    </div>
+    <br>
+    <br>
+    <h1>Voting</h1>
+    <input type='text' id='friend'/>
+    <br>
+    <input type='button' value = 'add friend' id='submitFriend'/>
+    <div id="nameTable"></div>
+    <h1 id='shopList'>Shopping List</h1>
+     <br>
+    <br>
+    <input type='text' id='item'/>
+    <br>
+    <input type='button' value = 'add item' id='submitItem'/>
+    <div id="itemTable"></div>
+       <div id ='output2'><input type='text' value='this is some text'/></div>
+    <div id='box2' class='box'></div><br><br>
+    <br><label>Add Friend</label><br>
+    <input id="inputFriendtoList" type='text'/>
+    <br>
+    <input type='submit' id ='submitFriendtoList' value ='add friend'>
+    <div id='output3'></div>
+    <br>
+    <br>
+    <input type='text' id = 'chars' placeholder='enter string' />
+    <input type = 'number' id='charsGuess' placeholder='5'/>
+    <button id='guessChar'>guess number of characters</button>
+    <br>
+    <br>
+    <h1 id ='titleReplace'>Welcome to the JavaScript Course</h1>
+    
+    <input type = 'text' id='guessText' placeholder='enter text' />
+    <button id='guessBtn'>guess</button>
+    <br>
+    <br>
+    <input id='dateInput' type='date' />
+    
+    <br>
+    <p id = 'output4'>
+   </p>
+    <p>Options</p>
+    <div id='red' class='colorOpt' value='red'><div class='text'>Red</div></div>
+    <div id='blue' class='colorOpt' value='blue'><div class='text'>Blue</div></div>
+    <div id='green' class='colorOpt' value='green'><div class='text'>Green</div></div>
+    <div id='yellow' class='colorOpt' value='yellow'><div class='text'>Yellow</div></div>
+    <p>Guess</p>
+    <div id='guessHolder'></div>
+    <br>
+    <input id='colorStart' type='button' value='start' />
+    <br>
+    <p>Time: <span class="countDownTime">10</span></p>
+    <p>Score: <span class="score">0</span></p>
+    <div class='gameboard'></div>
+    <br/>
+    <button id='startWhack'>Start Game</button>
+    <br>
+    <button id='regex'>Regex</button>
+    <br>
+    <input id='texting' placeholder='text'/>
+    <input id='num2' placeholder='num'/>
+    <input id='email2' placeholder='email'/>
+    <button id='regexCheck'>check all</button>
+    <br>
+    <br>
+    <p id='regtext'>Transparent: At our core, we believe in the power of medical research. For our team, this means the helping to improve the lives of patients and giving the best service to our clients while providing you with solutions that are simple and transparent.</p>
+    <input id='find' placeholder='search'/>
+    <input id='replace' placeholder='replace'/>
+    <button id='replaceBtn'>Replace text</button>
+    <br>
+    <br>
+    <p id='emails'>DieSachbearbeiter
+Choriner Straße 49 10435 Berlin E-Mail: moinsen2@blindtextgenerator.com DieSachbearbeiter Choriner Straße 49
+10435 Berlin E-Mail: moinsen2@blindtextgenerator.com DieSachbearbeiter
+Choriner Straße 49 10435 Berlin E-Mail: moinsen2@blindtextgenerator.com DieSachbearbeiter Choriner Straße 49 10435 Berlin E-Mail: moinsen2@blindtextgenerator.com.</p>
+    <button id='findEmails'>find emails</button>
+    <div id="emailList"></div>
+    <br>
+    <br>
+<div id='divTest'>
+    <div>1</div>
+    <div>2</div>
+<div>3
+    <div>4</div>
+    <div>5</div>
+    <div>5</div>
+    <div>5</div>
+    <div>5</div>
+    <div>5</div>
+    <div>5</div>
+</div>
+</div>
+<br>
+<br>
+<div id='gamePlayWrapper'>
+   <div id='gamePlayScore'></div>
+   <div id='gamePlayMessage'></div>
+   <div id='gamePlayBoard'></div>
+    <div class='gamePlayStart'>Start Game</div>
+</div>
+<br>
+<br>
+<input id='fileInput' type='file' multiple />
+<div id='fileMessage'></div>
+<br>
+<br>
+<div id='map'></div>
+<div id='shoppingCartPage'></div>
+<div id='shoppingCart'></div>
+<br>
+<br>
+<h1>Canvas</h1>
+<input id='canvasWords' />
+<input type='button' id='canvasButton' value='draw' />
+<br>
+<br>
+    <p id = 'output5'></p>
+<input type='color' id='bgcolor' />
+<input type='button' id='save' value='save'/>
+<input type='button' id='clear' value='clear'/>
+<br>
+
+<canvas id='canvas1' class='canvas'></canvas>
+<canvas id='canvas2' class='canvas'></canvas>
+<canvas id='canvas3' class='canvas'></canvas>
+<img id='myImg' src=''/>
+<input type='file' id='imgLoader' />
+<br>
+<br>
+<div>Party Invite Checklist</div>
+<div id='output6'></div>
+<input type='text' id='guestName' />
++<input type='number' id='addGuests' value='0' />
+<input type='button' value='add' />
+<br>
+<br>
+<input type='button' id='myBtn1' value='play the game' />
+<br>
+<input type='text' id='rCountry' value='' />
+<input type='text' id='dCountry' value='' />
+<br>
+<input type='text' id='uCountry' value='' />
+<input type='button' id='myGuess1' value='guess' />
+<input type='button' id='hint' value='hint' />
+<input type='button' id='showAnswer' value='show answer' />
+<br>
+<img src='' id='cFlag' />
+<br>
+<br>
+<div id='output7'></div>
+<input type='text' id='idText' />
+<input type='button' id='sendData' value='send'/>
+<br>
+<br>
+<div id='output8'></div>
+<input type='text' id='sytt' />
+<input type='button' id='searchyt' value='search'/>
+<br>
+<br>
+<div id='output9'></div>
+</body>
+</html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="json.json"></script>
+<script src="udemy.js" type="application/javascript"></script>
+
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOAsKCs4_-VvwXrtlnrOrXkWn8lHV9YKc&callback=initMap&libraries=&v=weekly"></script> -->
+
+
+
