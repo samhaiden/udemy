@@ -1,5 +1,545 @@
+/*insert into submissions (patientId, orderId, ordersId) values ("15282020061932rGz","152820200619","423");
+
+select id from submissions where patientId = '15282020061932rGz';
+
+insert into phi (submissionsId, patientId, ordersId, orderId, indication, birthDate, gender, ethnicity, height_ft, height_in, weight, diagnosis, otherClinicalTrials,otherStudyInterest,otherStudySelection) values (14728,'15282020061932rGz',423,'152820200619','COVID-19','1985-01-01','male','black-or-african-american',5,7,185,'no',0,1,'adhd,bunions,chronic-obstructive-pulmonary-disease-copd,hypoactive-sexual-desire-disorder-hsdd,insomnia,lactose-intolerance,low-back-pain,memory-loss,obsessive-compulsive-disorder,post-traumatic-stress-disorder-ptsd,panic-attacks,unknown');
+
+insert into contact_information (email,orderId,zipCode,lastName, ordersId,firstName,patientId,phoneNumber,submissionsId,preferredContactTime,preferredContactMethod) values ('jamesprigmore93@gmail.com','152820200619',45243,'Prigmore',423,'James','15282020061932rGz',5139043760,14728,'morning','text');
+
+insert into source (submissionsId,patientId,ordersId,orderId,ipAddress,browser,urlReferer,utmCampaign,utmContent,utmMedium,utmSource,utmTerm,operatingSystem) values (14728,'15282020061932rGz',423,'152820200619','24.210.180.97','Chrome','https://cincinnati.craigslist.org/dmg/d/cincinnati-paid-covid-19-research-study/7155633415.html','152820200619','n/a','ad','craigslist','n/a','Linux armv8l');*/
+
+
+// reaction game
+
+/*
+const score = document.querySelector('#score');
+const startGame = document.querySelector('#startGame');
+const board = document.querySelector('#output11');
+const endGame = document.querySelector('#endGame');
+let player = {score:0};
+let st;
+startGame.addEventListener('click',playGame);
+endGame.addEventListener('click',endG);
+
+
+function playGame(){
+    startGame.style.display = 'none';
+    endGame.style.cssText = 'display:flex; flex-direction: column; justify-content:center';
+    let rTime = Math.random()*2000+1000;
+    st = setTimeout(makeItem,rTime);
+}
+
+function makeItem(){
+    let body = document.body.getBoundingClientRect();
+    let boundary = board.getBoundingClientRect();
+    let div = document.createElement('div');
+    div.style.position = 'absolute';
+    div.style.left = Math.random()*boundary.width+"px";
+    div.style.top = Math.random()*boundary.top - (body.top - boundary.top)+"px"; 
+    div.style.width = Math.random()*50+20+'px';
+    div.style.height = Math.random()*50+20+'px';
+    div.style.borderRadius = '5px';
+    div.style.cursor = 'pointer';
+    div.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);
+    div.style.border = '1px solid black';
+    div.startTime = Date.now();
+    div.addEventListener('click',logPoint);
+    board.appendChild(div);
+    st = setTimeout(clearBoard, 2000);
+}
+
+function logPoint(){
+    clearTimeout(st);
+    let endTime = Date.now();
+    let diff = (endTime-this.startTime)/1000;
+    console.log('it took you '+ diff+ ' seconds');
+    board.removeChild(board.firstChild);
+    let num = Number(score.innerText);
+    num++;
+    score.innerHTML = num;
+    playGame();
+}
+
+function clearBoard(){
+    board.removeChild(board.firstChild);
+    console.log('you missed');
+    playGame();
+}
+
+function endG(){
+    clearTimeout(st);
+    if(board.firstChild){
+        board.removeChild(board.firstChild);
+    }
+    sc = score.innerText;
+    score.innerText = 0;
+    console.log('you got '+sc+' hits');
+    startGame.style.cssText = 'display:flex; flex-direction: column; justify-content:center';
+    endGame.style.display = 'none';
+    player.score = sc;
+}
+*/
+
+//calorie counter
+
+/*let output = document.getElementById('output10');
+
+document.forms[3].addEventListener('change',calculate);
+
+
+
+function calculate() {
+    event.preventDefault();
+    let radio = document.querySelectorAll('input[name="gender"]');
+    let g;
+    for(let x=0;x<radio.length;x++){
+        if (radio[x].checked==true){
+            g = radio[x].id;
+        }
+    }
+    
+    let al = document.getElementById('activityLevel').value;
+    let a = document.getElementById('age').value;
+    let w = document.getElementById('weight').value;
+    let hf = document.getElementById('heightft').value;
+    let hi = document.getElementById('heightin').value;
+    let ht = Number((hf*12))+Number(hi);
+    if(g == 'male') {
+        let b = (66+(w*6.2)+(ht*12.7)-(a*6.76))*al;
+        console.log(Math.floor(b));
+    } else {
+        let bf = (655.1+(4.35*w)+(4.7*ht)-(4.7*a))*al;
+        console.log(Math.floor(bf));
+    }
+}*/
+
+//105 ES6 promises and then ajax
+
+/*function getData(url){
+    return new Promise(function(response){
+        let xhr = new XMLHttpRequest();
+        xhr.open('get',url,true);
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                response(xhr.response);
+            }
+        }
+        xhr.send();
+})
+}
+
+
+getData('http://discoveryvip.com/shared/json.php?f=quiz').then(function(response) {
+    console.log(response);
+});*/
+
+//104 ES6 class constructors
+
+/*class makeName {
+    constructor(first,last){
+        this.firstName = first;
+        this.lastName = last;
+    }
+    complete(){
+        console.log(this);
+        console.log(this.firstName+' '+this.lastName);
+    }
+}
+
+let friend = new makeName('sam','haiden');
+friend.complete();*/
+
+//103 ES6 arrays - sets, copyWithin, entries
+
+/*function mkArr(){
+    console.log(arguments);
+    return Array.from(arguments);
+}
+
+let d = mkArr('test','test2','test3');
+
+let test = d.entries();
+
+console.log(test);
+
+//console.log(test.next().value);
+
+let test1 = [...test];
+console.log(test1);
+
+let e = [1,2,3,4,5,'javascript','test','js6','world','hello'];
+let f = e.entries();
+let g = [...f];
+console.log(g);
+
+let newSet = new Set(e);
+console.log(newSet);
+
+let arr2 = Array.from(newSet);
+console.log(arr2);
+
+//copyWithin two parameters (where you want to replace, what you want to replace it with)
+console.log(arr2.copyWithin(arr2.findIndex(x => x == 'hello'),5));
+
+//fills the entire array with the parameter
+console.log(arr2.fill('tester'));*/
+
+//102 ES6 arrays findIndex, find, and Array.from
+
+/*let arr = [2,3,4,33,5,44,2,12,34,5,2];
+
+let a = arr.find(function(x){
+    return x > 20;
+})
+console.log(a)
+
+let b = arr.find(x => x > 20);
+console.log(b);
+
+//find index requires a function to find the index of the parameter
+let c = arr.findIndex(x => x == 33);
+console.log(arr[c]);
+
+function mkArr(){
+    console.log(arguments);
+    return Array.from(arguments);
+}
+
+let d = mkArr('test','test2','test3');
+console.log(d);
+
+function mka() {
+    let a = Array.from(arguments);
+    console.log(a);
+    console.log(a.findIndex( x => x == 'asdf3'));
+    
+}
+
+mka('asdf','asdf2','asdf3');*/
+
+
+//101 ES6 map and data structure
+
+/*let arr = [1,2,3,4,4,3,5,6,7,3,4,5];
+
+function removeDup(a){
+    return [...new Set(a)];
+}
+
+console.log(removeDup(arr));
+
+let mapArr = arr.map(function(a){
+    return a*2;
+})
+
+console.log(mapArr);
+
+let myMap = new Map();
+
+myMap.set('hello','world');
+myMap.set('myname','sam');
+myMap.set('hello','world');
+myMap.set('myname','sam');
+
+console.log(myMap.size);
+console.log(myMap.has('myname'));
+console.log(myMap.get('hello'));
+
+//myMap.delete('hello');
+console.log(myMap);
+
+items = [{name:'iPhone',details:'white',cost:500,},
+            {name:'iPad',details:'white',cost:800,},
+            {name:'cable',details:'3 ft',cost:10,},
+            {name:'camera',details:'25MP',cost:300,},
+            {name:'laptop',details:'Intel I7',cost:1200,},
+            {name:'LCD monitor',details:'24 inch',cost:200,},
+            {name:'tv',details:'50 inch',cost:450,}];
+
+//ES5
+let holderCost = items.map(getCost)
+
+function getCost(items){
+    return items.cost;
+}
+
+//ES6
+let hCost = items.map( (items) => items.cost);
+
+console.log(holderCost);
+console.log(hCost);*/
+
+//100 ES6 sets and data structure
+
+//below are the common problems with JS
+
+/*let test = Object.create(null);
+
+console.log(test);
+
+test.id = 0;
+test[10] = 'hello world';
+
+console.log(test);
+
+if (test.id){
+    console.log('it\'s there');
+} else {
+    console.log('it\'s not there');
+}
+
+console.log(test['10']);
+
+let a = null;
+let b = null;
+
+test[a] = 'whatever';
+
+console.log(test[b]);
+
+//solutions to these problems with new JS
+
+let test2 = new Set();
+
+test2.add('hello world');
+test2.add('hello world 1');
+test2.add('hello world 2');
+test2.add('hello world'); //only takes unique entries
+
+//test2.delete('hello world');
+
+test2.forEach(function(value,key){
+    console.log(key +' '+value); //keys and values are the same thing in sets
+})
+
+let arr = [1,2,3,4,4,3,5,6,7,3,4,5];
+
+console.log(arr);
+
+function removeDup(a){
+    return [...new Set(a)];
+}
+console.log(test2);
+console.log(removeDup(arr));*/
+
+
+//99 ES6 generators and iterators
+
+/*'use strict'
+
+function* gen() {
+    let counter = 0;
+    while (counter < 10) {
+        yield counter++;
+    }
+}
+
+let pg = gen();
+for(let i=0;i<10;i++){
+    let holder = pg.next();
+    if(holder.done){
+        break;
+    }
+    console.log(holder.value);
+    //console.log(holder.done);
+}
+
+
+console.log(pg);
+console.log(pg.next());
+console.log(pg.next());
+console.log(pg.next());
+console.log(pg.next());*/
+
+//98 ES6 deconstruction
+
+/*
+let person = {first:'sam',last:'haiden'};
+console.log(person);
+
+let {first,last} = person;
+console.log(first);
+console.log(last);
+
+let arr = ['javascript','js','js6','ecma'];
+console.log(arr);
+
+let [a,b,c,d,e='java'] = arr;
+console.log(a);
+
+let obj = {time: 'now', date: 'yesterday'};
+
+//let {time, date} = obj;
+//console.log(time);
+
+console.log(obj.time);
+*/
+
+
+//97 ES6 functions fat arrows
+
+//word function is replaced with arrow symbol after parameter
+/*let mes0 = (value) => {
+    let a = 'hello';
+    console.log(a + value);
+}
+mes0(' test 1');
+
+//if only passing one parameter, you can remove rounded brackets. you can also remove function curly braces if only doing one command in function
+
+let mes1 = value => 'Hello '+ value;
+console.log(mes1('test 2'));
+
+let mes2 = value => console.log('Hello '+value);
+
+mes2('test 3');
+
+let myFun = value => console.log("Hello, " + value);
+
+myFun('Sam');
+
+let myFun2 = (a='friend') => console.log('hi, '+a);
+
+myFun2();*/
+
+//96 ES6 functions rest parameters
+
+//allows you to capture all parameters after the ones that are definied in function
+/*function myFun(a,b,...c){
+    console.log(arguments);
+    console.log(arguments.length);
+    console.log(c);
+    
+    let name = arguments.callee.name;
+    for(let x=0;x<arguments.length;x++){
+        console.log(name+ 'says this value '+arguments[x]);
+    }
+    
+}
+myFun(1,2,3,4,5,6,7,8,9);*/
+    
+//95 ES6 functions
+
+/*function outputMessage(message='No value',b=show(message,'blank','new')){
+    console.log(message);
+}
+
+function show() {
+    console.log(arguments);
+}
+
+function myFun(a,b,c,d='buff',e){
+    console.log(arguments);
+    console.log(arguments.length);
+    console.log(a+b+c+d);
+    console.log(arguments.callee.length);
+    
+    if(arguments.length==arguments.callee.length){
+        console.log('okay');
+    } else {
+        console.log('missing '+ (arguments.callee.length - arguments.length));
+    }
+}
+
+outputMessage();
+myFun(1,2,3);*/
+
+//94 ES6  string methods, replacing values, backticks
+
+/*let a = ' hello world   ';
+
+console.log(a.trim());
+console.log(a.startsWith(' he')); //case sensitive
+console.log(a.endsWith(' ')); //case sensitive
+console.log(a.includes('hell')); //case sensitive
+console.log(a.repeat(3));
+console.log(a.trim().repeat(3));*/
+
+//93 ES6  objects and arrays
+
+/*window.onload = asdf;
+
+function asdf() {
+const friends = {firstName:'larry',lastName:'stone'};
+
+console.log(friends);
+friends.lastName = 'jim';
+console.log(friends);
+friends.middleName = 'jones';
+console.log(friends);
+
+let arr = [];
+
+for (let i=0;i<10;i++){
+    arr.push(i);
+}
+
+console.log(arr);
+}
+
+console.log(arr); //throws error
+console.log(friends); //throws error*/
+
+/*let a = 'more lines \
+more lines';
+// \n\ for a new line; ` is a new line
+console.log(a);
+
+let b = `more lines
+more lines
+more lines`;
+console.log(b);*/
+
+//Templates and replacing string values
+
+//let name = 'laurence';
+
+/*function updateMessage(n) {
+    let message = `${n} was here today
+but he left. he said,"I like you. But I don't care."`; //can be used to create templates;
+
+    return message;
+}
+
+console.log(updateMessage('sam'));
+
+   for (let b=0;b<5;b++){
+       let message = `${b} is the new number`;
+        console.log(message);
+    }*/
+
+
+//92 ES6 block variables
+
+/*
+'use strict';
+
+var a = 'hello world';
+const b = 'constant';
+let c = 'hello world';
+
+//a = 'new'; var can be reassigned
+//b = 'new'; const cannot be reassigned
+//c = 'new'; let can be reassigned
+
+for(let i=0;i<5;i++){
+    console.log(i);
+} 
+//i is destroyed after curly braces - it only exists within the function. declaring a var in for loop would let you access variable after loop runs
+
+if(a) {
+    let d = 'works';
+    console.log(d);
+} else {
+    let d = 'not working';
+    console.log(d);
+}
+console.log(d);
+*/
+
 //91 AJAX + JSON Quiz
 
+/*"use strict";
 window.onload = init;
 var data = {};
 var page = 0;
@@ -26,31 +566,26 @@ function xhrFun(nurl,cb) {
 }
 
 function process(response) {
-   data = response;
+    data = response;
     build();
 }
 
 function build() {
     var html = '';
     var p = data[page];
-    if (ques >= 3) {
-        output.innerHTML = 'Done with quiz. You got '+score+' questions right.';
-    } else {
-    html += '<div>'+p.question+'?</div><br>'
+    html += '<div>'+p.question+'?</div><br>';
     for (var x=0;x<p.answers.length;x++){
         var answer = x == p.correct ? true: false;
-        html += '<input data-id="'+answer+'" type="radio" name="appleColor" value="'+p.answers[x]+'" /><label>'+p.answers[x]+'</label><br>';
+        html += '<input data-id="'+answer+'" type="radio" name="quiz" value="'+p.answers[x]+'" /><label>'+p.answers[x]+'</label><br>';
     }
     html += '<br><input onclick="checkAnswer()" type="button" value="submit" id="submitAnswer"/><br><input type="button" onclick="moveq()" value="prev" /><input type="button" onclick="moveq()" value="next" />';
+    html += '</div>'
     output.innerHTML = html;
-    ques++;
-}
 }
 
 function moveq() {
     var direction = event.target.value;
     if (direction == 'prev') {
-        console.log(direction);
         if (page > 0) {
             page--; 
             build();
@@ -58,7 +593,7 @@ function moveq() {
             console.log('this is the first question');
         }
     } else if (direction == 'next') {
-        if (page < 2) {
+        if (page < data.length-1) {
             page++;   
             build();
         } else {
@@ -69,25 +604,29 @@ function moveq() {
 
 function checkAnswer() {
     var guess = false;
-    var q = document.querySelectorAll('input[name="appleColor"]');
+    var q = document.querySelectorAll('input[name="quiz"]');
     for (var x=0;x<q.length;x++) {
         if(q[x].checked==true) {
-            userAnswer[page] = q[x].value;
+            userAnswer[data.length-1] = q[x].value;
             if (q[x].dataset.id == 'true') {
                 guess = true;
-                score++;
-                page++;
-                break;   
-            } else  {
-            page++;
+                score++;  
+            } 
+            ques++
             break;
-       }
     }
     }
-    console.log(guess+' score: '+score);
+    data.splice(page,1);
+    if (ques >= 3) {
+        console.log(userAnswer);
+        //userAnswer.reverse();
+        console.log(userAnswer);
+        output.innerHTML = 'Done with quiz. You got '+score+' questions right.';
+    } else {
+    page = 0;
     build();
-    console.log(userAnswer);
-}
+    }
+}*/
 
 //90 AJAX + YouTube
 
@@ -868,7 +1407,7 @@ if(b===c){
 
 //77 Strict mode
 
-/*//'use strict';
+/*'use strict';
 
 myFun();
 

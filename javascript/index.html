@@ -6,8 +6,35 @@
     <title></title>
     
     <style>
+     
+        #startGame, #endGame {
+            background-color: red;
+            color: white;
+            width: 150px;
+            height: 50px;
+            border-radius: 30px;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
         
-      
+        #endGame {
+            display:none;
+        }
+        
+        #score {
+            text-align: center;
+            padding:20px;
+        }
+        
+        #output11 {
+            width: 100%;
+            height: 500px;
+        }
         .toggle {
             padding: 10px;
             font-size: 1.2em;
@@ -533,6 +560,46 @@ Choriner Straße 49 10435 Berlin E-Mail: moinsen2@blindtextgenerator.com DieSach
 <br>
 <br>
 <div id='output9'></div>
+<div id='output10'></div>
+<h1>Calorie Counter</h1>
+<form id="calCounter">
+<label>Male</label>
+<input id='male' type='radio' name='gender' required />
+<label>Female</label>
+<input id='female' type='radio' name='gender' />
+<p>
+<label>Age</label>
+<input type='number' id='age' value='30' type='number' required />
+</p>
+<p>
+<label>Height (ft)</label>
+<input type='number' id='heightft' value='5' type='number' min='4' max='7' required />
+<label>Height (in)</label>
+<input type='number' id='heightin' value='9' type='number' min='0' max='11' required />
+</p>
+<p>
+<label>Weight</label>
+<input type='number' id='weight' value='160' type='number' required />
+</p>
+<p>
+<label>Activity Level </label>
+<select id='activityLevel' required>
+    <option value='1.9'>Extreme</option>
+    <option value='1.725'>High</option>
+    <option value='1.55' selected>Moderate</option>
+    <option value='1.375'>Low</option>
+    <option value='1.2'>Sedentary</option>
+</select>
+</p>
+<p>
+<input type='submit' value='calculate' id='calculate' />
+</p>
+</form>
+<br>
+<div id="score">0</div>
+<div id="startGame">START</div>
+<div id="endGame">END</div>
+<div id="output11"></div>
 </body>
 </html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
